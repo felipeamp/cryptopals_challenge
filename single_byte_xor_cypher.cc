@@ -30,7 +30,7 @@ namespace singlebytexorcypher {
   constexpr double kDictionaryFrequencyNorm = 0.27841577218254;
 
   double GetMessageScore(const std::vector<unsigned char> &message) {
-    assert(message.size() > 0);
+    assert(!message.empty());
 
     if (!utils::is_printable_or_space(message)) {
         return 0.0;
@@ -80,7 +80,7 @@ namespace singlebytexorcypher {
                            unsigned char *letter,
                            std::string *decoded_message,
                            double *score) {
-    assert(message.size() > 0);
+    assert(!message.empty());
 
     std::vector<unsigned char> bytes = utils::HexToBytes(message);
 

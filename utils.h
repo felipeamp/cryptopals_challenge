@@ -1,7 +1,7 @@
 // Copyright 2017 <felipeamp>
 
-#ifndef _CRYPTOPALS_BASE_H_
-#define _CRYPTOPALS_BASE_H_
+#ifndef UTILS_H_
+#define UTILS_H_
 
 #include <string>
 #include <vector>
@@ -18,4 +18,4 @@ bool is_printable_or_space(const std::vector<unsigned char>& v);
 
 }  // namespace utils
 
-#endif  // _CRYPTOPALS_BASE_H_
+#endif  // UTILS_H_

@@ -1,7 +1,7 @@
 // Copyright 2017 <felipeamp>
 
-#ifndef _CRYPTOPALS_SINGLE_BYTE_XOR_CYPHER_H_
-#define _CRYPTOPALS_SINGLE_BYTE_XOR_CYPHER_H_
+#ifndef SINGLE_BYTE_XOR_CYPHER_H_
+#define SINGLE_BYTE_XOR_CYPHER_H_
 
 #include <string>
 #include <vector>
@@ -19,4 +19,4 @@ namespace singlebytexorcypher {
       unsigned char mask);
 }  // namespace singlebytexorcypher
 
-#endif  // _CRYPTOPALS_SINGLE_BYTE_XOR_CYPHER_H_
+#endif  // SINGLE_BYTE_XOR_CYPHER_H_

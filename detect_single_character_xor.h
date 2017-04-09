@@ -1,7 +1,7 @@
 // Copyright 2017 <felipeamp>
 
-#ifndef _CRYPTOPALS_DETECT_SINGLE_CHARACTER_XOR_H_
-#define _CRYPTOPALS_DETECT_SINGLE_CHARACTER_XOR_H_
+#ifndef DETECT_SINGLE_CHARACTER_XOR_H_
+#define DETECT_SINGLE_CHARACTER_XOR_H_
 
 #include <string>
 #include <istream>
@@ -15,4 +15,4 @@ void DetectSingleCharacterXor(std::istream &iss,
 
 }  // namespace detectsinglecharacterxor
 
-#endif  // _CRYPTOPALS_DETECT_SINGLE_CHARACTER_XOR_H_
+#endif  // DETECT_SINGLE_CHARACTER_XOR_H_

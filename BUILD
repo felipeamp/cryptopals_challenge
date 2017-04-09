@@ -20,6 +20,13 @@ cc_library(
 )
 
 cc_library(
+    name = "repeating-key-xor",
+    srcs = ["repeating_key_xor.cc"],
+    hdrs = ["repeating_key_xor.h"],
+    deps = [":utils"],
+)
+
+cc_library(
     name = "single-byte-xor-cypher",
     srcs = ["single_byte_xor_cypher.cc"],
     hdrs = ["single_byte_xor_cypher.h"],
@@ -54,6 +61,14 @@ cc_test(
     copts = ["-Iexternal/gtest/googletest-release-1.8.0/googletest/include"],
     deps = ["@gtest//:main",
             ":hex-to-base64",],
+)
+
+cc_test(
+    name = "repeating-key-xor-test",
+    srcs = ["repeating_key_xor_test.cc"],
+    copts = ["-Iexternal/gtest/googletest-release-1.8.0/googletest/include"],
+    deps = ["@gtest//:main",
+            ":repeating-key-xor",],
 )
 
 cc_test(

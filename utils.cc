@@ -27,7 +27,7 @@ std::string BytesToHex(const std::vector<unsigned char>& bytes) {
 }
 
 std::vector<unsigned char> HexToBytes(const std::string& s) {
-  assert(s.size() % 2 == 0);
+  assert((s.size() & 1) == 0);
   std::vector<unsigned char> bytes;
   for (size_t index = 0; index < s.size(); index += 2) {
     std::string byte_str = s.substr(index, 2);
