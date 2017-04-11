@@ -66,19 +66,23 @@ TEST(Base64ToHex, ConvertsCorrectlyBothWaysSinglePadding) {
                std::string(gone_and_back.begin(), gone_and_back.end()).c_str());
 }
 
-// TEST(Base64ToHex, ConvertsCorrectlyBothWaysDoublePadding) {
-//   std::string s("any carnal pleasure");
-//   std::vector<unsigned char> v(s.begin(), s.end());
-//   ASSERT_STREQ(std::string("YW55IGNhcm5hbCBwbGVhc3VyZQ==").c_str(),
-//                utils::BytesToBase64(v).c_str());
-// }
+TEST(Base64ToHex, ConvertsCorrectlyBothWaysDoublePadding) {
+  std::string s("any carnal pleasure");
+  std::vector<unsigned char> v(s.begin(), s.end());
+  std::vector<unsigned char> gone_and_back = utils::Base64ToBytes(
+    utils::BytesToBase64(v));
+  ASSERT_STREQ(s.c_str(),
+               std::string(gone_and_back.begin(), gone_and_back.end()).c_str());
+}
 
-// TEST(Base64ToHex, ConvertsCorrectlyBothWaysNoPadding) {
-//   std::string s("any carnal pleasur");
-//   std::vector<unsigned char> v(s.begin(), s.end());
-//   ASSERT_STREQ(std::string("YW55IGNhcm5hbCBwbGVhc3Vy").c_str(),
-//                utils::BytesToBase64(v).c_str());
-// }
+TEST(Base64ToHex, ConvertsCorrectlyBothWaysNoPadding) {
+  std::string s("any carnal pleasur");
+  std::vector<unsigned char> v(s.begin(), s.end());
+  std::vector<unsigned char> gone_and_back = utils::Base64ToBytes(
+    utils::BytesToBase64(v));
+  ASSERT_STREQ(s.c_str(),
+               std::string(gone_and_back.begin(), gone_and_back.end()).c_str());
+}
 
 }  // namespace
 
