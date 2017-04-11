@@ -8,6 +8,10 @@
 
 namespace utils {
 
+std::vector<unsigned char> Base64ToBytes(const std::string& s);
+
+std::string BytesToBase64(const std::vector<unsigned char>& bytes);
+
 std::string BytesToHex(const std::vector<unsigned char>& bytes);
 
 std::vector<unsigned char> HexToBytes(const std::string& s);
