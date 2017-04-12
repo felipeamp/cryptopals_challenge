@@ -175,6 +175,30 @@ std::string BytesToHex(const std::vector<unsigned char>& bytes) {
   return move(oss.str());
 }
 
+size_t PopCount(unsigned char byte) {
+  size_t pop = 0;
+  while(byte) {
+    ++pop;
+    byte &= byte - 1;
+  }
+  return pop;
+}
+
+size_t HammingDist(unsigned char byte1, unsigned char byte2) {
+  return PopCount(byte1 ^ byte2);
+}
+
+size_t HammingDist(const std::string& s1, const std::string& s2) {
+  assert(s1.size() == s2.size());
+  size_t total_hamming_dist = 0;
+  for (size_t index = 0; index < s1.size(); ++index) {
+    total_hamming_dist += HammingDist(
+      static_cast<unsigned char>(s1[index]),
+      static_cast<unsigned char>(s2[index]));
+  }
+  return total_hamming_dist;
+}
+
 std::vector<unsigned char> HexToBytes(const std::string& s) {
   assert((s.size() & 1) == 0);
   std::vector<unsigned char> bytes;

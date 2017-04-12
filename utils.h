@@ -14,6 +14,10 @@ std::string BytesToBase64(const std::vector<unsigned char>& bytes);
 
 std::string BytesToHex(const std::vector<unsigned char>& bytes);
 
+size_t HammingDist(unsigned char byte1, unsigned char byte2);
+
+size_t HammingDist(const std::string& s1, const std::string& s2);
+
 std::vector<unsigned char> HexToBytes(const std::string& s);
 
 bool is_printable_or_space(const std::string& s);

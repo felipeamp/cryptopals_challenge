@@ -6,6 +6,13 @@ cc_library(
 )
 
 cc_library(
+    name = "find-keysize",
+    srcs = ["find_keysize.cc"],
+    hdrs = ["find_keysize.h"],
+    deps = [":utils"],
+)
+
+cc_library(
     name = "fixed-xor",
     srcs = ["fixed_xor.cc"],
     hdrs = ["fixed_xor.h"],
@@ -45,6 +52,14 @@ cc_test(
     copts = ["-Iexternal/gtest/googletest-release-1.8.0/googletest/include"],
     deps = ["@gtest//:main",
             ":detect-single-character-xor",],
+)
+
+cc_test(
+    name = "find-keysize-test",
+    srcs = ["find_keysize_test.cc"],
+    copts = ["-Iexternal/gtest/googletest-release-1.8.0/googletest/include"],
+    deps = ["@gtest//:main",
+            ":find-keysize",],
 )
 
 cc_test(
