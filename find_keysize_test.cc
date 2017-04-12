@@ -12,8 +12,10 @@ namespace {
 
   TEST(HammingDist, CalculatesCorrectly) {
     std::string s1("this is a test");
+    std::vector<unsigned char> bytes1(s1.begin(), s1.end());
     std::string s2("wokka wokka!!!");
-    ASSERT_EQ(utils::HammingDist(s1, s2),
+    std::vector<unsigned char> bytes2(s2.begin(), s2.end());
+    ASSERT_EQ(utils::HammingDist(bytes1, bytes2),
               static_cast<unsigned char>(37));
   }
 

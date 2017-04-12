@@ -7,7 +7,13 @@
 #include <vector>
 
 namespace singlebytexorcypher {
-  void SingleByteXorCypher(const std::string &message,
+
+  void SingleByteXorCypher(const std::vector<unsigned char> &bytes,
+                           unsigned char *letter,
+                           std::string *decoded_message,
+                           double *score);
+
+  void SingleByteXorCypher(const std::string &hex_message,
                            unsigned char *letter,
                            std::string *decoded_message,
                            double *score);
@@ -17,6 +23,7 @@ namespace singlebytexorcypher {
   std::vector<unsigned char> UnmaskVector(
       const std::vector<unsigned char> &bytes,
       unsigned char mask);
+
 }  // namespace singlebytexorcypher
 
 #endif  // SINGLE_BYTE_XOR_CYPHER_H_

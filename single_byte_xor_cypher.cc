@@ -75,14 +75,11 @@ namespace singlebytexorcypher {
     }
     return move(unmasked);
   }
-
-  void SingleByteXorCypher(const std::string &message,
+  void SingleByteXorCypher(const std::vector<unsigned char> &bytes,
                            unsigned char *letter,
                            std::string *decoded_message,
                            double *score) {
-    assert(!message.empty());
-
-    std::vector<unsigned char> bytes = utils::HexToBytes(message);
+    assert(!bytes.empty());
 
     double best_score = std::numeric_limits<double>::min();
     unsigned char best_mask;
@@ -107,6 +104,18 @@ namespace singlebytexorcypher {
     *letter = best_mask;
     std::vector<unsigned char> decoded_bytes = UnmaskVector(bytes, best_mask);
     *decoded_message = std::string(decoded_bytes.begin(), decoded_bytes.end());
+  }
+
+  void SingleByteXorCypher(const std::string &hex_message,
+                           unsigned char *letter,
+                           std::string *decoded_message,
+                           double *score) {
+    assert(!hex_message.empty());
+    std::vector<unsigned char> bytes = utils::HexToBytes(hex_message);
+    SingleByteXorCypher(bytes,
+                        letter,
+                        decoded_message,
+                        score);
   }
 
 }  // namespace singlebytexorcypher

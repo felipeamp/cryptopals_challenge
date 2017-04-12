@@ -1,4 +1,13 @@
 cc_library(
+    name = "break-repeating-key-xor",
+    srcs = ["break_repeating_key_xor.cc"],
+    hdrs = ["break_repeating_key_xor.h"],
+    deps = [":find-keysize",
+            ":single-byte-xor-cypher",
+            ":utils"],
+)
+
+cc_library(
     name = "detect-single-character-xor",
     srcs = ["detect_single_character_xor.cc"],
     hdrs = ["detect_single_character_xor.h"],
@@ -44,6 +53,14 @@ cc_library(
     name = "utils",
     srcs = ["utils.cc"],
     hdrs = ["utils.h"],
+)
+
+cc_test(
+    name = "break-repeating-key-xor-test",
+    srcs = ["break_repeating_key_xor_test.cc"],
+    copts = ["-Iexternal/gtest/googletest-release-1.8.0/googletest/include"],
+    deps = ["@gtest//:main",
+            ":break-repeating-key-xor",],
 )
 
 cc_test(
