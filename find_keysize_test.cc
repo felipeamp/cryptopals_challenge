@@ -10,13 +10,16 @@
 
 namespace {
 
+constexpr char kMessage1[] = "this is a test";
+
+constexpr char kMessage2[] = "wokka wokka!!!";
+
+constexpr unsigned char kCorrectDistance = 37;
+
   TEST(HammingDist, CalculatesCorrectly) {
-    std::string s1("this is a test");
-    std::vector<unsigned char> bytes1(s1.begin(), s1.end());
-    std::string s2("wokka wokka!!!");
-    std::vector<unsigned char> bytes2(s2.begin(), s2.end());
-    ASSERT_EQ(utils::HammingDist(bytes1, bytes2),
-              static_cast<unsigned char>(37));
+    std::string s1(kMessage1);
+    std::string s2(kMessage2);
+    ASSERT_EQ(kCorrectDistance, utils::HammingDist(s1, s2));
   }
 
 }  // namespace

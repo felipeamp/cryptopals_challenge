@@ -1,5 +1,6 @@
 // Copyright 2017 <felipeamp>
 
+#include <algorithm>
 #include <cassert>
 #include <string>
 #include <utility>
@@ -9,9 +10,6 @@
 #include "find_keysize.h"
 #include "single_byte_xor_cypher.h"
 #include "utils.h"
-
-
-#include <iostream>
 
 
 namespace breakrepeatingkeyxor {
@@ -66,7 +64,6 @@ void BreakRepeatingKeyXor(
                                                &letter,
                                                &decoded_block,
                                                &score);
-      std::cout << "decoded_block: " << decoded_block <<  std::endl;
       key += static_cast<char>(letter);
       decoded_blocks.push_back(decoded_block);
     }
@@ -78,9 +75,9 @@ void BreakRepeatingKeyXor(
 void BreakRepeatingKeyXor(const std::vector<unsigned char>& encoded_bytes,
                           std::string *decoded_message,
                           std::string *key) {
-  std::vector<std::string> decoded_messages(1, "");
-  std::vector<std::string> keys(1, "");
-  BreakRepeatingKeyXor(encoded_bytes, &decoded_messages, &keys);
+  std::vector<std::string> decoded_messages;
+  std::vector<std::string> keys;
+  BreakRepeatingKeyXor(encoded_bytes, &decoded_messages, &keys, 1);
   *decoded_message = decoded_messages[0];
   *key = keys[0];
 }
