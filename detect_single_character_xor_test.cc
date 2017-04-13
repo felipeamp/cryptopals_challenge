@@ -11,12 +11,22 @@
 
 namespace {
 
+constexpr char kPathToFile4[] =
+  "/home/fpereira/Github/cryptopals_challenge/4.txt";
+
+constexpr char kFileOpenError[] = "Couldn't open file \"4.txt\".";
+
+constexpr char kCorrectMask = '5';
+
+constexpr char kCorrectlyDecodedMessage[] = "Now that the party is jumping\n";
+
 TEST(DetectSingleCharacterXor, CorrectMessage) {
   std::ifstream fin;
-  fin.open("4.txt");
+  fin.open(kPathToFile4);
   if (!fin.is_open()) {
-    std::cout << "Couldn't open file \"4.txt\"." << std::endl;
+    std::cout << kFileOpenError << std::endl;
   }
+
   unsigned char letter;
   std::string decoded_message;
   double score;
@@ -24,16 +34,16 @@ TEST(DetectSingleCharacterXor, CorrectMessage) {
                                                      &letter,
                                                      &decoded_message,
                                                      &score);
-  ASSERT_STREQ(std::string("Now that the party is jumping\n").c_str(),
-               decoded_message.c_str());
+  ASSERT_STREQ(kCorrectlyDecodedMessage, decoded_message.c_str());
 }
 
 TEST(DetectSingleCharacterXor, CorrectLetter) {
   std::ifstream fin;
-  fin.open("4.txt");
+  fin.open(kPathToFile4);
   if (!fin.is_open()) {
-    std::cout << "Couldn't open file \"4.txt\"." << std::endl;
+    std::cout << kFileOpenError << std::endl;
   }
+
   unsigned char letter;
   std::string decoded_message;
   double score;
@@ -41,7 +51,7 @@ TEST(DetectSingleCharacterXor, CorrectLetter) {
                                                      &letter,
                                                      &decoded_message,
                                                      &score);
-  ASSERT_EQ(letter, '5');
+  ASSERT_EQ(kCorrectMask, letter);
 }
 
 }  // namespace

@@ -7,13 +7,16 @@
 
 namespace {
 
+constexpr char kString1Before[] = "1c0111001f010100061a024b53535009181c";
+
+constexpr char kString2Before[] = "686974207468652062756c6c277320657965";
+
+constexpr char kStringAfter[] = "746865206b696420646f6e277420706c6179";
+
 TEST(FixedXorTest, XorsCorrectly) {
-  ASSERT_STREQ(std::string("746865206b69642064"
-                           "6f6e277420706c6179").c_str(),
-               fixedxor::FixedXor("1c0111001f01010006"
-                                  "1a024b53535009181c",
-                                  "686974207468652062"
-                                  "756c6c277320657965").c_str());
+  ASSERT_STREQ(kStringAfter,
+               fixedxor::FixedXor(std::string(kString1Before),
+                                  std::string(kString2Before)).c_str());
 }
 
 }  // namespace
