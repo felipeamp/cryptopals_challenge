@@ -8,6 +8,15 @@ cc_library(
 )
 
 cc_library(
+    name = "decrypt-aes-ecb-mode",
+    srcs = ["decrypt_aes_ecb_mode.cc"],
+    hdrs = ["decrypt_aes_ecb_mode.h"],
+    copts = ["-Iexternal/openssl"],
+    linkopts = ["-openssl"],
+    deps = [":utils"],
+)
+
+cc_library(
     name = "detect-single-character-xor",
     srcs = ["detect_single_character_xor.cc"],
     hdrs = ["detect_single_character_xor.h"],
@@ -61,6 +70,14 @@ cc_test(
     copts = ["-Iexternal/gtest/googletest-release-1.8.0/googletest/include"],
     deps = ["@gtest//:main",
             ":break-repeating-key-xor",],
+)
+
+cc_test(
+    name = "decrypt-aes-ecb-mode-test",
+    srcs = ["decrypt_aes_ecb_mode_test.cc"],
+    copts = ["-Iexternal/gtest/googletest-release-1.8.0/googletest/include"],
+    deps = ["@gtest//:main",
+            ":decrypt-aes-ecb-mode",],
 )
 
 cc_test(
